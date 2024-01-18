@@ -1,0 +1,36 @@
+<dependencies>
+
+  <!-- Android dependencies are specified under the "androidPackages" element.
+       Each "androidPackage" element contains the attributes of an Android
+       dependency (e.g AAR, JAR reference). -->
+  <androidPackages>
+    <!-- Global set of repositories to search for packages.
+         These repos will be searched for all packages specified by
+         androidPackage. -->
+    <repositories>
+      <repository>https://repo.maven.apache.org/maven2</repository>
+      <repository>https://repo.onestore.co.kr/repository/onestore-sdk-public</repository>
+    </repositories>
+    <!-- The "spec" attribute is *required* and provides the Maven package
+         specification.
+
+         Currently this only supports group:artifact:version_specification where
+         group:artifact:version_specification references a Maven package that
+         can be located in:
+         * Maven central.
+         * Google's Maven repo.
+         * Local Android SDK Maven repo.
+
+         Additional repositories can be added using the "repositories" element.
+    -->
+    <androidPackage spec="com.com2us.android.hive:youtube-helper:1.0.1"/>
+    <androidPackage spec="com.android.installreferrer:installreferrer:2.2"/>
+
+    <!-- OneStore v7 -->
+    <androidPackage spec="com.onestorecorp.sdk:sdk-iap:21.00.01"/>
+    <androidPackage spec="com.onestorecorp.sdk:sdk-configuration-kr:1.0.0"/>
+
+    <androidPackage spec="com.android.billingclient:billing:6.0.1"/>
+    <androidPackage spec="com.amazon.device:amazon-appstore-sdk:3.0.4"/>
+  </androidPackages>
+</dependencies>

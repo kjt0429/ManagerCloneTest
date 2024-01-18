@@ -1,0 +1,31 @@
+<dependencies>
+
+  <!-- Android dependencies are specified under the "androidPackages" element.
+       Each "androidPackage" element contains the attributes of an Android
+       dependency (e.g AAR, JAR reference). -->
+       
+  <androidPackages>
+    <!-- Global set of repositories to search for packages.
+         These repos will be searched for all packages specified by
+         androidPackage. -->
+    <repositories>
+      <repository>https://repo.maven.apache.org/maven2</repository> 
+<!--      <repository>https://s01.oss.sonatype.org/content/repositories/snapshots/</repository>-->
+    </repositories>
+    
+    <androidPackage spec="com.com2us.android.hive:hive-sdk:4.22.0.0"/>
+    <androidPackage spec="com.com2us.android.hive:hive-plugin:4.22.0.0"/>
+    
+  </androidPackages>
+  <iosPods>
+      <sources>
+          <source>https://github.com/Com2uSPlatformCorp/HiveSDK-iOS.git</source>
+      </sources>
+      
+      <iosPod name="HiveSDK" version="4.22.0.0"/>
+      <iosPod name="HiveExtensions" version="4.22.0.0"/>
+      <iosPod name="HiveAppTrackingTransparency" version="4.22.0.0"/>
+      <iosPod name="HiveSDKUnityPlugin" version="4.22.0.0"/>
+      <iosPod name="HiveResource" version="4.22.0.0"/>
+  </iosPods>
+</dependencies>

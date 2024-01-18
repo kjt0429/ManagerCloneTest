@@ -1,0 +1,47 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+        // Add Hive(for Huawei)
+        maven { url 'https://developer.huawei.com/repo/' }
+    }
+}
+
+include ':launcher', ':unityLibrary'
+include 'unityLibrary:hive.androidlib'
+
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
+    repositories {
+        
+        google()
+        mavenCentral()
+// Android Resolver Repos Start
+        def unityProjectPath = $/file:////Users/jschoi/NewPlatformGit/HIVE-SDK-v4-Unity_2022_3_6_huawei/Hive_SDK_UnityPlugin/$.replace("\\", "/")
+        maven {
+            url "https://repo.maven.apache.org/maven2" // Assets/C2S/Editor/HIVESDKDependencies.xml:15, Assets/Hive_SDK_v1/Editor/HIVESDKDependencies.xml:15, Assets/Hive_SDK_v4/Editor/HIVESDK_DefaultDependencies.xml:13, Assets/Hive_SDK_v4/Editor/HIVESDK_ProviderAdjustDependencies.xml:12, Assets/Hive_SDK_v4/Editor/HIVESDK_ProviderAppsFlyerDependencies.xml:12, Assets/Hive_SDK_v4/Editor/HIVESDK_ProviderFacebookDependencies.xml:12, Assets/Hive_SDK_v4/Editor/HIVESDK_ProviderGoogleDependencies.xml:13, Assets/Hive_SDK_v4/Editor/HIVESDK_ProviderLineDependencies.xml:12, Assets/Hive_SDK_v4/Editor/HIVESDK_ProviderQQDependencies.xml:12, Assets/Hive_SDK_v4/Editor/HIVESDK_ProviderRecaptchaDependencies.xml:12, Assets/Hive_SDK_v4/Editor/HIVESDK_ProviderWechatDependencies.xml:12, Assets/SampleBuilder/etcAndroid/excludeProviderDependencies/C2S/Editor/HIVESDKDependencies.xml:15, Assets/SampleBuilder/etcAndroid/excludeProviderDependencies/Hive_SDK_v1/Editor/HIVESDKDependencies.xml:15
+        }
+        maven {
+            url "https://jcenter.bintray.com" // Assets/C2S/Editor/HIVESDKDependencies.xml:15, Assets/Hive_SDK_v1/Editor/HIVESDKDependencies.xml:15, Assets/Hive_SDK_v4/Editor/HIVESDK_ProviderAdjustDependencies.xml:12, Assets/Hive_SDK_v4/Editor/HIVESDK_ProviderAppsFlyerDependencies.xml:12, Assets/Hive_SDK_v4/Editor/HIVESDK_ProviderFacebookDependencies.xml:12, Assets/Hive_SDK_v4/Editor/HIVESDK_ProviderGoogleDependencies.xml:13, Assets/Hive_SDK_v4/Editor/HIVESDK_ProviderLineDependencies.xml:12, Assets/Hive_SDK_v4/Editor/HIVESDK_ProviderQQDependencies.xml:12, Assets/Hive_SDK_v4/Editor/HIVESDK_ProviderWechatDependencies.xml:12
+        }
+        maven {
+            url "https://maven.singular.net" // Assets/C2S/Editor/HIVESDKDependencies.xml:15, Assets/Hive_SDK_v1/Editor/HIVESDKDependencies.xml:15
+        }
+        maven {
+            url "https://repo.onestore.co.kr/repository/onestore-sdk-public" // Assets/C2S/Editor/HIVESDKDependencies.xml:15, Assets/Hive_SDK_v1/Editor/HIVESDKDependencies.xml:15, Assets/Hive_SDK_v4/Editor/HIVESDK_DefaultDependencies.xml:13
+        }
+        maven {
+            url "https://developer.huawei.com/repo/" // Assets/Hive_SDK_v4/Editor/HIVESDK_ProviderHuaweiDependencies.xml:11
+        }
+        maven {
+            url "https://maven.google.com" // Assets/Hive_SDK_v4/Editor/HIVESDK_ProviderGoogleDependencies.xml:42
+        }
+        mavenLocal()
+// Android Resolver Repos End
+        flatDir {
+            dirs "${project(':unityLibrary').projectDir}/libs"
+        }
+    }
+}

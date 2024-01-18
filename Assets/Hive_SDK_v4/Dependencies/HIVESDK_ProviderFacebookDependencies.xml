@@ -1,0 +1,19 @@
+<dependencies>
+  <!-- Android dependencies are specified under the "androidPackages" element.
+       Each "androidPackage" element contains the attributes of an Android
+       dependency (e.g AAR, JAR reference). -->
+  <androidPackages>
+    <!-- Global set of repositories to search for packages.
+         These repos will be searched for all packages specified by
+         androidPackage. -->
+    <repositories>
+      <repository>https://repo.maven.apache.org/maven2</repository>
+    </repositories>
+    
+    <androidPackage spec="com.com2us.android.hive:hive-service-extension-facebook:4.22.0.0"/>
+
+  </androidPackages>
+  <iosPods>
+      <iosPod name="HiveProviderFacebook" version="4.22.0.0"/>
+  </iosPods>
+</dependencies>

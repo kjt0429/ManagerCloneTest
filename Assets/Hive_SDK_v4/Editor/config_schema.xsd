@@ -1,0 +1,263 @@
+<!-- schema file for hive_config.xml -->
+
+<xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema'>
+
+    <xs:element name="properties">
+        <xs:complexType>
+            <xs:all>
+
+                <xs:element name="useAuthv1" type="xs:boolean" />
+
+                <xs:element name="useAuthv4" type="xs:boolean" />
+
+                <xs:element name="appId" type="xs:string" />
+
+                <xs:element name="serverId" minOccurs="0" type="xs:string" />
+
+                <xs:element name="zone">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="real" />
+                            <xs:enumeration value="sandbox" />
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+
+                <xs:element name="useLog" type="xs:boolean" />
+
+                <xs:element name="usePush" type="xs:boolean" />
+
+                <xs:element name="company" type="xs:string" />
+
+                <xs:element name="channel" default="C2S" type="xs:string" />
+
+                <xs:element name="market" minOccurs="0">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="GO" />
+                            <xs:enumeration value="LE" />
+                            <xs:enumeration value="AP" />
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+
+                <xs:element name="universalLink" minOccurs="0"/>
+
+                <xs:element name="permissions" minOccurs="0">
+                    <xs:complexType>
+                        <xs:all minOccurs="0">
+                            <xs:element name="sdwrite" type="xs:boolean"/>
+                        </xs:all>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="httpConnectTimeout" minOccurs="0" type="xs:nonNegativeInteger" />
+
+                <xs:element name="httpReadTimeout" minOccurs="0" type="xs:nonNegativeInteger" />
+
+                <xs:element name="maxGameLogSize" minOccurs="0" type="xs:nonNegativeInteger" />
+
+                <xs:element name="analyticsSendLimit" minOccurs="0" type="xs:nonNegativeInteger" />
+
+                <xs:element name="analyticsQueueLimit" minOccurs="0" type="xs:nonNegativeInteger" />
+
+                <xs:element name="analyticsSendCycle" minOccurs="0" type="xs:nonNegativeInteger" />
+
+                <xs:element name="exitEventEnabled" minOccurs="0" type="xs:boolean" />
+
+                <xs:element name="useCrashReport" minOccurs="0" type="xs:boolean" />
+
+                <xs:element name="hivePermissionViewOn" minOccurs="0" type="xs:boolean" />
+
+                <xs:element name="companyIndex" minOccurs="0" type="xs:nonNegativeInteger" />
+
+                <xs:element name="gameLanguage" minOccurs="0" type="xs:string"/>
+
+                <xs:element name="ageGateU13" minOccurs="0" type="xs:boolean" />
+
+                <!-- providers -->
+                <xs:element name="providers" minOccurs="0">
+                    <xs:complexType>
+                        <xs:all>
+
+                            <xs:element name="facebook" minOccurs="0">
+                                <xs:complexType>
+
+                                    <xs:sequence>
+                                        <xs:element name="permissions" minOccurs="0">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="permission" minOccurs="0" maxOccurs="unbounded">
+                                                        <xs:complexType>
+                                                            <xs:attribute name="name" use="optional" type="xs:string"/>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+
+                                    <xs:attribute name="id" use="required" type="xs:string"/>
+                                </xs:complexType>
+                            </xs:element>
+
+                            <xs:element name="google" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:attribute name="playAppId" use="required" type="xs:string"/>
+                                    <xs:attribute name="clientId" use="required" type="xs:string"/>
+                                    <xs:attribute name="serverClientId" use="required" type="xs:string"/>
+                                    <xs:attribute name="reversedClientId" use="required" type="xs:string"/>
+                                </xs:complexType>
+                            </xs:element>
+
+                            <xs:element name="qq" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:attribute name="id" use="required" type="xs:string"/>
+                                </xs:complexType>
+                            </xs:element>
+
+                            <xs:element name="vk" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:attribute name="id" use="required" type="xs:string"/>
+                                </xs:complexType>
+                            </xs:element>
+
+                            <xs:element name="wechat" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:attribute name="id" use="required" type="xs:string"/>
+                                    <xs:attribute name="secret" use="required" type="xs:string"/>
+                                    <xs:attribute name="universalLink" use="required" type="xs:string"/>
+                                    <xs:attribute name="paymentKey" use="optional" type="xs:string"/>
+                                </xs:complexType>
+                            </xs:element>
+
+                            <xs:element name="line" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:attribute name="channelId" use="required" type="xs:string"/>
+                                </xs:complexType>
+                            </xs:element>
+
+                            <xs:element name="twitter" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:attribute name="consumerKey" use="required" type="xs:string"/>
+                                    <xs:attribute name="consumerSecret" use="required" type="xs:string"/>
+                                </xs:complexType>
+                            </xs:element>
+
+                            <xs:element name="Adjust" minOccurs="0">
+                                <xs:complexType>
+
+                                    <xs:sequence>
+                                        <xs:group ref="events"/>
+                                    </xs:sequence>
+
+                                    <xs:attributeGroup ref="basicAttribute"/>
+                                    <xs:attribute name="secretId" use="required" type="xs:string"/>
+                                    <xs:attribute name="info1" use="required" type="xs:string"/>
+                                    <xs:attribute name="info2" use="required" type="xs:string"/>
+                                    <xs:attribute name="info3" use="required" type="xs:string"/>
+                                    <xs:attribute name="info4" use="required" type="xs:string"/>
+                                </xs:complexType>
+                            </xs:element>
+
+                            <xs:element name="Singular" minOccurs="0">
+                                <xs:complexType>
+
+                                    <xs:sequence>
+                                        <xs:group ref="events"/>
+                                    </xs:sequence>
+
+                                    <xs:attributeGroup ref="basicAttribute"/>
+                                </xs:complexType>
+                            </xs:element>
+
+                            <xs:element name="AppsFlyer" minOccurs="0">
+                                <xs:complexType>
+
+                                    <xs:sequence>
+                                        <xs:group ref="events"/>
+                                    </xs:sequence>
+
+                                    <xs:attributeGroup ref="basicAttribute"/>
+                                    <xs:attribute name="itunesConnectAppId" use="required" type="xs:string"/>
+                                </xs:complexType>
+                            </xs:element>
+
+                            <xs:element name="Firebase" minOccurs="0">
+                                <xs:complexType>
+
+                                    <xs:sequence>
+                                        <xs:group ref="events"/>
+                                    </xs:sequence>
+                                    
+                                </xs:complexType>
+                            </xs:element>
+
+                        </xs:all>
+                    </xs:complexType>
+
+                </xs:element>
+                <!-- providers end -->
+
+                
+                <!-- deprecated v4.14.0 -->
+                <xs:element name="facebookAppId" minOccurs="0" type="xs:string" />
+
+                <xs:element name="googlePlayAppId" minOccurs="0" type="xs:string" />
+
+                <xs:element name="googleServerClientId" minOccurs="0" type="xs:string" />
+
+                <xs:element name="googleReversedClientId" minOccurs="0" type="xs:string" />
+
+                <xs:element name="googleClientId" minOccurs="0" type="xs:string" />
+
+                <xs:element name="qqAppId" minOccurs="0" type="xs:string" />
+
+                <xs:element name="vkAppId" minOccurs="0" type="xs:string" />
+
+                <xs:element name="wechatAppId" minOccurs="0" type="xs:string" />
+
+                <xs:element name="wechatAppSecret" minOccurs="0" type="xs:string" />
+
+                <xs:element name="wechatPaymentKey" minOccurs="0" type="xs:string" />
+
+                <xs:element name="lineChannelId" minOccurs="0" type="xs:string" />
+
+                <xs:element name="twitterConsumerKey" minOccurs="0" type="xs:string" />
+
+                <xs:element name="twitterConsumerSecret" minOccurs="0" type="xs:string" />
+                <!-- deprecated end -->
+
+            </xs:all>
+
+        </xs:complexType>
+
+    </xs:element>
+
+
+    <xs:group name="events">
+        <xs:sequence>
+            <xs:element name="events" maxOccurs="1">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="event" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:attribute name="name" use="required" type="xs:string"/>
+                                <xs:attribute name="value" use="required" type="xs:string"/>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:group>
+
+
+    <xs:attributeGroup name="basicAttribute">
+        <xs:attribute name="name" type="xs:string"/>
+        <xs:attribute name="id" type="xs:string"/>
+        <xs:attribute name="key" use="required" type="xs:string"/>
+    </xs:attributeGroup>
+
+
+</xs:schema>
